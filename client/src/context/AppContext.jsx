@@ -37,6 +37,20 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const fetchShows = async () => {
+    try {
+      const { data } = await axios.get("/api/show/all");
+
+      if (data.success) {
+        setShows(data.shows);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
