@@ -67,6 +67,10 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    fetchShows();
+  }, []);
+
 
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
