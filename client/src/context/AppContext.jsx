@@ -71,7 +71,25 @@ export const AppProvider = ({ children }) => {
     fetchShows();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      fetchIsAdmin();
+      fetchFavoriteMovies();
+    }
+  }, [user]);
 
+  const value = {
+    axios,
+    fetchIsAdmin,
+    user,
+    getToken,
+    navigate,
+    isAdmin,
+    shows,
+    favoriteMovies,
+    fetchFavoriteMovies,
+    image_base_url,
+  };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
